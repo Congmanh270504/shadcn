@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     Tooltip,
     TooltipContent,
@@ -29,45 +29,67 @@ import {
 export function Sidebar() {
 
     const [tittleAbove, setTittleAbove] = useState([ // above
-        { name: 'Dashboard', tag: Home },
-        { name: 'Orders', tag: ShoppingCart }
+        {
+            name: '',
+            tag: Home,
+            bgAccent: "bg-accent",
+            textAccent: "text-accent-foreground",
+            textMuted: ""
+        },
+        {
+            name: 'Orders',
+            tag: ShoppingCart,
+            bgAccent: "",
+            textAccent: "",
+            textMuted: "text-muted-foreground"
+        },
+
     ])
     const [tittleBelow, setTittleBelow] = useState([ // above
-        { name: 'Setting', tag: Settings },
+        {
+            name: 'Setting',
+            tag: Settings,
+            bgAccent: "",
+            textAccent: "",
+            textMuted: "text-muted-foreground"
+        }
     ])
-    const [aa, setJ] = useState(1);
     const [active, setActive] = useState([{
-        bgAccent: '',
+        bgAccent: "",
         textAccent: "",
         textMuted: "text-muted-foreground"
-    }, {
+    },
+    {
         bgAccent: 'bg-accent',
         textAccent: "text-accent-foreground",
         textMuted: ""
     }])
-    const [listStyle, setListStyle] = useState([{
-        bgAccent: "bg-accent",
-        textAccent: "text-accent-foreground",
-        textMuted: ""
-    },
-    {
-        bgAccent: "",
-        textAccent: "",
-        textMuted: "text-muted-foreground"
-    }
-    ])
-    const handleActiveOff = () => {
-        const tmp = listStyle.map(() => active[0]);
-        setListStyle(tmp);
-    }
-    const handleActiveOn = (index) => {
-        console.log(index)
-        // handleActiveOff();
-        setListStyle(listStyle.map((item, i) => i === index ? active[1] : active[0])) // lỗi làm swap idex listStyle
-        // setListStyle(active[1])
-        console.log(listStyle)
-    }
+    const handleActiveOn = (index, value) => {
+        if (value === 1) {
+            const updatedTittleAbove = tittleAbove.map(item => ({
+                ...item,
+                ...active[0]
+            }));
+            updatedTittleAbove[index] = { ...tittleAbove[index], ...active[1] }
+            setTittleAbove(updatedTittleAbove);
+        }
+        else {
+            const updatedTittleAbove = tittleAbove.map(item => ({
+                ...item,
+                ...active[0]
+            }));
+            setTittleAbove(updatedTittleAbove);
 
+            const updatedTittleBelow = tittleBelow.map(item => ({
+                ...item,
+                ...active[0]
+            }));
+            updatedTittleBelow[index] = { ...tittleBelow[index], ...active[1] }
+            setTittleBelow(updatedTittleBelow)
+        }
+
+
+    }
     return (
         <aside className="fixed inset-y-0 left-0 z-10 w-14 flex-col border-r bg-background flex sm:flex">
             <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
@@ -83,26 +105,23 @@ export function Sidebar() {
                         tittleAbove.map((item, index) => {
                             const Icon = item.tag;
                             return (
-                                <>
-                                    <Tooltip key={index}>
-                                        <TooltipTrigger asChild className={`${listStyle[index].bgAccent} ${listStyle[index].textAccent} ${listStyle[index].textMuted}`}
-                                            onClick={() => {
-                                                // handleActiveOff();
-                                                handleActiveOn(index);
-                                            }
-                                            }
+                                <Tooltip key={index}>
+                                    <TooltipTrigger asChild className={`${item.bgAccent} ${item.textAccent} ${item.textMuted}`}
+                                        onClick={() => {
+                                            handleActiveOn(index, 1);
+                                        }
+                                        }
+                                    >
+                                        <Link
+                                            to={`/${item.name}`}
+                                            className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
                                         >
-                                            <Link
-                                                to={index == 0 ? `/` : `/${item.name}`}
-                                                className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
-                                            >
-                                                {Icon ? <Icon className="h-5 w-5" /> : null}
-                                                <span className="sr-only">{item.name}</span>
-                                            </Link>
-                                        </TooltipTrigger>
-                                        <TooltipContent side="right">{item.name}</TooltipContent>
-                                    </Tooltip>
-                                </>
+                                            {Icon ? <Icon className="h-5 w-5" /> : null}
+                                            <span className="sr-only">{item.name}</span>
+                                        </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="right">{index === 0 ? "Home" : item.name}</TooltipContent>
+                                </Tooltip>
                             )
                         })
                     }
@@ -110,54 +129,29 @@ export function Sidebar() {
             </nav>
             <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
                 <TooltipProvider>
-
                     {
                         tittleBelow.map((item, index) => {
                             const Icon = item.tag;
                             return (
-                                <>
-                                    <Tooltip key={index}>
-                                        <TooltipTrigger asChild className={`${listStyle[1].bgAccent} ${listStyle[1].textAccent} ${listStyle[1].textMuted}`}
+                                <Tooltip key={index}>
+                                    <TooltipTrigger asChild className={`${item.bgAccent} ${item.textAccent} ${item.textMuted}`}
+                                    >
+                                        <Link
+                                            to={`/${item.name}`}
+                                            className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
                                             onClick={() => {
-                                                // handleActiveOff();
-                                                // console.log(index);
-                                                // handleActiveOn(index);
-                                                // setListStyle(listStyle.map((item, i) => i === index ? active[1] : active[0]))
-                                                console.log(aa);
-                                            }
-                                            }
+                                                handleActiveOn(index, 2)
+                                            }}
                                         >
-                                            <Link
-                                                to={`/${item.name}`}
-                                                className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
-                                            >
-                                                {Icon ? <Icon className="h-5 w-5" /> : null}
-                                                <span className="sr-only">{item.name}</span>
-                                            </Link>
-                                        </TooltipTrigger>
-                                        <TooltipContent side="right">{item.name}</TooltipContent>
-                                    </Tooltip>
-                                </>
+                                            {Icon ? <Icon className="h-5 w-5" /> : null}
+                                            <span className="sr-only">{item.name}</span>
+                                        </Link>
+                                    </TooltipTrigger>
+                                    <TooltipContent side="right">{item.name}</TooltipContent>
+                                </Tooltip>
                             )
                         })
                     }
-
-                    {/* <Tooltip>
-                        <TooltipTrigger asChild className={`${listStyle[1].bgAccent} ${listStyle[1].textAccent} ${listStyle[1].textMuted}`}
-                            onClick={() => {
-
-                            }}>
-                            <Link
-                                to='/Setting'
-                                className="flex h-9 w-9 items-center justify-center rounded-lg  transition-colors hover:text-foreground md:h-8 md:w-8"
-                            >
-                                <Settings className="h-5 w-5" />
-                                <span className="sr-only">Settings</span>
-                            </Link>
-                        </TooltipTrigger>
-                        <TooltipContent side="right">Settings</TooltipContent>
-                    </Tooltip> */}
-
                 </TooltipProvider>
             </nav>
         </aside >
