@@ -26,7 +26,7 @@ import {
     Users2,
 } from "lucide-react"
 
-export function Sidebar({ tittleAbove, setTittleAbove,tittleBelow,setTittleBelow }) {
+export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBelow, showHeaderAndNav }) {
     const [active, setActive] = useState([{
         bgAccent: "",
         textAccent: "",
@@ -101,7 +101,7 @@ export function Sidebar({ tittleAbove, setTittleAbove,tittleBelow,setTittleBelow
                 </TooltipProvider>
             </nav>
             <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
-                <TooltipProvider>
+                <TooltipProvider showHeaderAndNav={showHeaderAndNav}>
                     {
                         tittleBelow.map((item, index) => {
                             const Icon = item.tag;
