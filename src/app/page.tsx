@@ -11,7 +11,7 @@ export default function Home() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}>
-            <Route index element={<Dashboard />} />
+            <Route index  element={<Dashboard />} />
             <Route path="orders" element={<Orders />} />
             <Route path="setting" element={<Setting />} />
           </Route>

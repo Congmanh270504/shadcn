@@ -1,4 +1,5 @@
 import './style.css'
+import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 import { Outlet, Link, NavLink } from "react-router-dom";
 import {
@@ -71,26 +72,26 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs"
-function Headers() {
+function Headers({ tittleAbove, tittleBelow }) {
+
+    const onActive = tittleAbove.filter((item) => item.bgAccent !== "")
+    console.log(onActive);
+    console.log(onActive.name);
     return (
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 pb-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 min-[320px]:ml-2">
             <Breadcrumb className="hidden md:flex">
                 <BreadcrumbList>
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild>
-                            <Link href="/" >Dashboard</Link>
+                            <Link href={`/${onActive[0].name}`} >{onActive[0].name}</Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
-                    <BreadcrumbSeparator />
+                    {/* <BreadcrumbSeparator />
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild>
                             <Link to="/Orders">Orders</Link>
                         </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>Recent Orders</BreadcrumbPage>
-                    </BreadcrumbItem>
+                    </BreadcrumbItem> */}
                 </BreadcrumbList>
             </Breadcrumb>
             <div className="relative ml-auto flex-1 md:grow-0">

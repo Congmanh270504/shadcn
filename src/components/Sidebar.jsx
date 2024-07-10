@@ -26,34 +26,7 @@ import {
     Users2,
 } from "lucide-react"
 
-export function Sidebar() {
-
-    const [tittleAbove, setTittleAbove] = useState([ // above
-        {
-            name: '',
-            tag: Home,
-            bgAccent: "bg-accent",
-            textAccent: "text-accent-foreground",
-            textMuted: ""
-        },
-        {
-            name: 'Orders',
-            tag: ShoppingCart,
-            bgAccent: "",
-            textAccent: "",
-            textMuted: "text-muted-foreground"
-        },
-
-    ])
-    const [tittleBelow, setTittleBelow] = useState([ // above
-        {
-            name: 'Setting',
-            tag: Settings,
-            bgAccent: "",
-            textAccent: "",
-            textMuted: "text-muted-foreground"
-        }
-    ])
+export function Sidebar({ tittleAbove, setTittleAbove,tittleBelow,setTittleBelow }) {
     const [active, setActive] = useState([{
         bgAccent: "",
         textAccent: "",
@@ -120,7 +93,7 @@ export function Sidebar() {
                                             <span className="sr-only">{item.name}</span>
                                         </Link>
                                     </TooltipTrigger>
-                                    <TooltipContent side="right">{index === 0 ? "Home" : item.name}</TooltipContent>
+                                    <TooltipContent side="right">{item.name}</TooltipContent>
                                 </Tooltip>
                             )
                         })
