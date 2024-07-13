@@ -26,7 +26,7 @@ import {
     Users2,
 } from "lucide-react"
 
-export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBelow, showHeaderAndNav }) {
+export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBelow, showHeaderAndNav, setShowHeaderAndNav }) {
     const [active, setActive] = useState([{
         bgAccent: "",
         textAccent: "",
@@ -60,8 +60,6 @@ export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBel
             updatedTittleBelow[index] = { ...tittleBelow[index], ...active[1] }
             setTittleBelow(updatedTittleBelow)
         }
-
-
     }
     return (
         <aside className="fixed inset-y-0 left-0 z-10 w-14 flex-col border-r bg-background flex sm:flex">
@@ -82,6 +80,7 @@ export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBel
                                     <TooltipTrigger asChild className={`${item.bgAccent} ${item.textAccent} ${item.textMuted}`}
                                         onClick={() => {
                                             handleActiveOn(index, 1);
+                                            setShowHeaderAndNav(true);
                                         }
                                         }
                                     >
@@ -114,6 +113,7 @@ export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBel
                                             className="flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8"
                                             onClick={() => {
                                                 handleActiveOn(index, 2)
+                                                setShowHeaderAndNav(false);
                                             }}
                                         >
                                             {Icon ? <Icon className="h-5 w-5" /> : null}

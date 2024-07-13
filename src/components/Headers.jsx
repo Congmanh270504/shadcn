@@ -72,19 +72,27 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs"
-function Headers({ tittleAbove, tittleBelow }) {
+function Headers({ tittleAbove, setTittleAbove }) {
+    const [onActive, setOnActive] = useState(tittleAbove.filter((item) => item.bgAccent !== ""));
 
-    const onActive = tittleAbove.filter((item) => item.bgAccent !== "")
-    console.log(onActive);
-    console.log(onActive.name);
+
+
     return (
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 pb-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 min-[320px]:ml-2">
             <Breadcrumb className="hidden md:flex">
                 <BreadcrumbList>
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild>
-                            {/* <Link href={`/${onActive[0].name}`} >{onActive[0].name === '' ? "Home" : onActive[0].name}</Link> */}
-
+                            <>
+                                {
+                                    useEffect(() => {
+                                        const updatedOnActive = tittleAbove.filter((item) => item.bgAccent !== "");
+                                        setOnActive(updatedOnActive);
+                                        console.log(onActive);
+                                    }, []) // bug ko lấy đc giá trị của onActive
+                                }
+                                <Link href={`/${onActive[0].name}`} >{onActive[0].name === '' ? "Home" : onActive[0].name}</Link>
+                            </>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     {/* <BreadcrumbSeparator />
