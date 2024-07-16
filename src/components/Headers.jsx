@@ -2,6 +2,7 @@ import './style.css'
 import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 import { Outlet, Link, NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import {
     ChevronLeft,
     ChevronRight,
@@ -74,8 +75,10 @@ import {
 } from "@/components/ui/tabs"
 function Headers({ tittleAbove, setTittleAbove }) {
     const [onActive, setOnActive] = useState(tittleAbove.filter((item) => item.bgAccent !== ""));
-
-
+    let navigate = useNavigate();
+    const link = (path) => {
+        navigate(path);
+    }
 
     return (
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 pb-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6 min-[320px]:ml-2">
@@ -84,23 +87,11 @@ function Headers({ tittleAbove, setTittleAbove }) {
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild>
                             <>
-                                {
-                                    useEffect(() => {
-                                        const updatedOnActive = tittleAbove.filter((item) => item.bgAccent !== "");
-                                        setOnActive(updatedOnActive);
-                                        console.log(onActive);
-                                    }, []) // bug ko lấy đc giá trị của onActive
-                                }
                                 <Link href={`/${onActive[0].name}`} >{onActive[0].name === '' ? "Home" : onActive[0].name}</Link>
                             </>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
-                    {/* <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link to="/Orders">Orders</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem> */}
+
                 </BreadcrumbList>
             </Breadcrumb>
             <div className="relative ml-auto flex-1 md:grow-0">
@@ -123,10 +114,12 @@ function Headers({ tittleAbove, setTittleAbove }) {
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => link("/login")}>
+                        Login
+                    </DropdownMenuItem>
                     <DropdownMenuLabel>My Account</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>Settings</DropdownMenuItem>
-                    <DropdownMenuItem>Support</DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>Logout</DropdownMenuItem>
                 </DropdownMenuContent>

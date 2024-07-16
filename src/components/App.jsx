@@ -3,6 +3,7 @@ import Headers from '../components/Headers';
 
 import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import LoginForm from './LoginForm';
 
 function App({ showHeaderAndNav, setShowHeaderAndNav, tittleAbove, setTittleAbove, tittleBelow, setTittleBelow }) {
 

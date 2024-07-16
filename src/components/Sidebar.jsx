@@ -92,7 +92,7 @@ export function Sidebar({ tittleAbove, setTittleAbove, tittleBelow, setTittleBel
                                             <span className="sr-only">{item.name}</span>
                                         </Link>
                                     </TooltipTrigger>
-                                    <TooltipContent side="right">{item.name}</TooltipContent>
+                                    <TooltipContent side="right">{index === 0 ? "Home" : item.name}</TooltipContent>
                                 </Tooltip>
                             )
                         })
