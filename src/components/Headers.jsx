@@ -74,7 +74,10 @@ import {
     TabsTrigger,
 } from "@/components/ui/tabs"
 function Headers({ tittleAbove, setTittleAbove }) {
-    const [onActive, setOnActive] = useState(tittleAbove.filter((item) => item.bgAccent !== ""));
+    console.log(tittleAbove);
+    console.log(tittleAbove[1]);
+    const [onActive, setOnActive] = useState(tittleAbove.filter((item) => item.bgAccent !== "")); // thg này ko chịu re-render lại nên là ko lấy ra đc giá trị filter 
+    console.log(onActive);
     let navigate = useNavigate();
     const link = (path) => {
         navigate(path);
