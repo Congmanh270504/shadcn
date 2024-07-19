@@ -687,6 +687,10 @@ video {
   margin-left: -0.25rem;
   margin-right: -0.25rem;
 }
+  .mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
   .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -702,10 +706,6 @@ video {
   .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
-}
-  .mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
 }
   .ml-auto {
   margin-left: auto;
@@ -761,6 +761,9 @@ video {
   .h-2 {
   height: 0.5rem;
 }
+  .h-2\/4 {
+  height: 50%;
+}
   .h-3 {
   height: 0.75rem;
 }
@@ -793,12 +796,6 @@ video {
 }
   .h-px {
   height: 1px;
-}
-  .h-3\/4 {
-  height: 75%;
-}
-  .h-2\/4 {
-  height: 50%;
 }
   .min-h-\[calc\(100vh_-_theme\(spacing\.16\)\)\] {
   min-height: calc(100vh - 4rem);
@@ -943,9 +940,6 @@ video {
   .gap-6 {
   gap: 1.5rem;
 }
-  .gap-8 {
-  gap: 2rem;
-}
   .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -995,12 +989,6 @@ video {
 }
   .border {
   border-width: 1px;
-}
-  .border-0 {
-  border-width: 0px;
-}
-  .border-2 {
-  border-width: 2px;
 }
   .border-b {
   border-bottom-width: 1px;
@@ -1070,6 +1058,12 @@ video {
 }
   .object-cover {
   object-fit: cover;
+}
+  .p-0 {
+  padding: 0px;
+}
+  .p-0\.5 {
+  padding: 0.125rem;
 }
   .p-1 {
   padding: 0.25rem;
@@ -1201,6 +1195,10 @@ video {
   .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+  .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
   .font-medium {
   font-weight: 500;
@@ -1682,10 +1680,6 @@ video {
     height: auto;
   }
 
-  .sm\:h-\[400px\] {
-    height: 400px;
-  }
-
   .sm\:w-\[300px\] {
     width: 300px;
   }
@@ -1787,28 +1781,12 @@ video {
     display: none;
   }
 
-  .md\:h-8 {
-    height: 2rem;
-  }
-
-  .md\:h-\[600px\] {
-    height: 600px;
-  }
-
   .md\:h-3\/4 {
     height: 75%;
   }
 
-  .md\:h-2\/4 {
-    height: 50%;
-  }
-
-  .md\:h-\[\] {
-    height: ;
-  }
-
-  .md\:h-3 {
-    height: 0.75rem;
+  .md\:h-8 {
+    height: 2rem;
   }
 
   .md\:w-8 {
@@ -1849,14 +1827,6 @@ video {
 
   .md\:gap-8 {
     gap: 2rem;
-  }
-
-  .md\:gap-\[\] {
-    gap: ;
-  }
-
-  .md\:gap-32 {
-    gap: 8rem;
   }
 
   .md\:p-10 {
@@ -1922,20 +1892,16 @@ video {
     grid-template-columns: 250px 1fr;
   }
 
+  .lg\:gap-20 {
+    gap: 5rem;
+  }
+
   .lg\:gap-4 {
     gap: 1rem;
   }
 
   .lg\:gap-6 {
     gap: 1.5rem;
-  }
-
-  .lg\:gap-32 {
-    gap: 8rem;
-  }
-
-  .lg\:gap-20 {
-    gap: 5rem;
   }
 }
 

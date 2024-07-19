@@ -6,11 +6,6 @@ import { Outlet } from 'react-router-dom';
 import LoginForm from './LoginForm';
 
 function App({ showHeaderAndNav, setShowHeaderAndNav, tittleAbove, setTittleAbove, tittleBelow, setTittleBelow }) {
-
-
-    // useEffect(() => {
-    //     setShowHeaderAndNav(true);
-    // }, [showHeaderAndNav]);
     return (
         <>
             <div className="flex min-h-screen w-full flex-col bg-muted/40">

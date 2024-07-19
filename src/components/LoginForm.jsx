@@ -1,5 +1,6 @@
 import { Outlet, Link, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { FcGoogle } from "react-icons/fc";
 import { Button } from "@/components/ui/button"
 import "../css/style.css"
 import {
@@ -15,7 +16,7 @@ import { FaEyeSlash } from "react-icons/fa";
 export function LoginForm() {
     const [showEyes, setShowEyes] = useState(false)
     return (
-        <Card className="mx-auto max-w-sm h-2/4 absolute top-2/4 left-2/4 -ml-2/4 -translate-x-1/2 -translate-y-1/2 w-3/4 flex flex-col justify-center gap-8 md:h-3/4 lg:gap-20
+        <Card className="mx-auto max-w-sm h-2/4 absolute top-2/4 left-2/4 -ml-2/4 -translate-x-1/2 -translate-y-1/2 w-3/4 flex flex-col justify-center gap-3 md:h-3/4 lg:gap-20
         
         ">
             <CardHeader>
@@ -42,10 +43,9 @@ export function LoginForm() {
                                 Forgot your password?
                             </Link>
                         </div>
-                        <div className="flex justify-between items-center border border-solid rounded-md">
+                        <div className="flex justify-between items-center border border-solid rounded-md p-0.5">
                             <input id="password" className="flex h-10 w-full border-input bg-background px-3 py-2 text-sm outline-none border-none" onChange={(e) => {
-                               e.target.value === "" ? setShowEyes(false) : setShowEyes(true)
-                                // setShowEyes(!showEyes)
+                                e.target.value === "" ? setShowEyes(false) : setShowEyes(true)
                             }} />
                             {showEyes && <FaEyeSlash className="mx-3 wobble-hor-bottom" />}
                         </div>
@@ -54,12 +54,12 @@ export function LoginForm() {
                         Login
                     </Button>
                     <Button variant="outline" className="w-full">
-                        Login with Google
+                        Login with Google <FcGoogle />
                     </Button>
                 </div>
                 <div className="mt-4 text-center text-sm">
                     Don&apos;t have an account?{" "}
-                    <Link href="#" className="hover-underline-animation">
+                    <Link to="/signup" className="hover-underline-animation">
                         Sign up
                     </Link>
                 </div>

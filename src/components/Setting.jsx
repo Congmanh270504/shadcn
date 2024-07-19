@@ -22,7 +22,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 
-export function Setting({ tittleAbove, setShowHeaderAndNav }) {
+export function Setting({ tittleAbove, setShowHeaderAndNav, setTittleAbove, tittleBelow, setTittleBelow }) {
     const [active, setActive] = useState([{
         bgAccent: "",
         textAccent: "",
@@ -40,7 +40,13 @@ export function Setting({ tittleAbove, setShowHeaderAndNav }) {
         }));
         updatedTittleAbove[index] = { ...tittleAbove[index], ...active[1] }
         setTittleAbove(updatedTittleAbove);
-
+    }
+    const handleOffActiveTittleAbove = () => {
+        const updatedTittleAbove = tittleBelow.map(item => ({
+            ...item,
+            ...active[0]
+        }));
+        setTittleBelow(updatedTittleAbove);
     }
     return (
         <div className="flex min-h-screen w-full flex-col">
@@ -61,6 +67,7 @@ export function Setting({ tittleAbove, setShowHeaderAndNav }) {
                                     onClick={() => {
                                         setShowHeaderAndNav(true);
                                         handleActiveOn(index);
+                                        handleOffActiveTittleAbove();
                                     }}
                                 >
                                     {index === 0 ? "Home" : item.name}
