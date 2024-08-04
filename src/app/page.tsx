@@ -3,7 +3,7 @@ import Dashboard from "../components/Dashboard";
 import Orders from "../components/Orders";
 import Setting from "../components/Setting";
 import LoginForm from "../components/LoginForm";
-import SignUp from "../components/SignUp";
+import Register from "../components/Register";
 import React, { createContext, useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../components/App";
@@ -71,7 +71,7 @@ export default function Container() {
             />
           </Route>
           <Route path="login" element={<LoginForm />} />
-          <Route path="signUp" element={<SignUp />} />
+          <Route path="register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </>
