@@ -600,6 +600,9 @@ video {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.ml-1 {
+  margin-left: 0.25rem;
+}
 .ml-auto {
   margin-left: auto;
 }
@@ -614,9 +617,6 @@ video {
 }
 .mt-auto {
   margin-top: auto;
-}
-.ml-1 {
-  margin-left: 0.25rem;
 }
 .inline-block {
   display: inline-block;
@@ -1156,6 +1156,10 @@ video {
 }
 .text-secondary-foreground {
   color: hsl(var(--secondary-foreground));
+}
+.text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
 }
 .underline-offset-4 {
   text-underline-offset: 4px;

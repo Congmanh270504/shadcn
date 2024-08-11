@@ -51,7 +51,7 @@ export function Register() {
                             <input id="password" className="flex h-10 w-full border-input bg-background px-3 py-2 text-sm outline-none border-none" type={type} onChange={(e) => {
                                 e.target.value === "" ? setShowEyes(false) : setShowEyes(true)
                             }} />
-                            {showEyes && <FaEyeSlash className="mx-3 wobble-hor-bottom" onClick={(e) => {
+                            {showEyes && <FaEyeSlash className="mx-3 wobble-hor-bottom cursor-pointer" onClick={(e) => {
                                 type === "password" ? setTypeInput("text") : setTypeInput("password")
                             }} />}
                         </div>
