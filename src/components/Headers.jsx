@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 import { Outlet, Link, NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import avatar from "/src/assets/Imgs/android-chrome-192x192.png";
 import {
     ChevronLeft,
     ChevronRight,
@@ -51,28 +52,8 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-} from "@/components/ui/pagination"
-import { Progress } from "@/components/ui/progress"
-import { Separator } from "@/components/ui/separator"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-} from "@/components/ui/tabs"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 function Headers({ tittleAbove, setTittleAbove }) {
     const onActive = tittleAbove.filter((item) => item.bgAccent === "bg-accent")
     let navigate = useNavigate();
@@ -109,8 +90,11 @@ function Headers({ tittleAbove, setTittleAbove }) {
                         size="icon"
                         className="overflow-hidden rounded-full"
                     >
-                        <FaUser className="overflow-hidden rounded-full" width={36}
-                            height={36} />
+                        <Avatar>
+                            <AvatarImage src="https://github.com/Congmanh270504/Db-FloralHaven/blob/main/binh-hoa-anh-duong-ruc-ro-572/12165d1e0f.jpg" />
+                            <AvatarFallback>User</AvatarFallback>
+                        </Avatar>
+
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">

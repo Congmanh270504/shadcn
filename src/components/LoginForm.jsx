@@ -1,4 +1,5 @@
-import { Outlet, Link, NavLink, useNavigate } from "react-router-dom";
+import { Outlet, Link, NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "@/components/ui/button"
@@ -17,7 +18,6 @@ export function LoginForm() {
     const [showEyes, setShowEyes] = useState(false)
     const [type, setTypeInput] = useState("password")
     const [errorMessages, setErrorMessages] = useState(false);
-    const [path, setPath] = useState("/login")
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -31,14 +31,17 @@ export function LoginForm() {
             [name]: value,
         }));
     };
+    const navigate = useNavigate();
     const [disabledBtn, setdisabledBtn] = useState(true)
     const handleLogin = (user) => {
         if (user.email !== "manh" || user.password !== "123") {
             setErrorMessages(true);
-            setPath("/")
+            return 0;
         } else {
             localStorage.setItem("user", JSON.stringify(user));
+            return 1;
         }
+
 
     }
     return (
@@ -79,15 +82,12 @@ export function LoginForm() {
                         </div>
                     </div>
                     {errorMessages && <div className="text-red-500">Email or password is incorrect</div>}
-                    <Link to={path}>
-                        <Button type="submit" className="w-full" disabled={user.email === "" || user.password === "" ? true : false} onClick={(e) => {
-                            e.preventDefault()
-                            handleLogin(user)
-                            console.log(path)
-                        }}>
-                            Login
-                        </Button>
-                    </Link>
+                    <Button type="submit" className="w-full" disabled={user.email === "" || user.password === "" ? true : false} onClick={(e) => {
+                        e.preventDefault()
+                        handleLogin(user) === 1 ? navigate("/", { replace: true }) : navigate("/login", { replace: true })
+                    }}>
+                        Login
+                    </Button>
                     <Button variant="outline" className="w-full">
                         Login with Google <FcGoogle className="ml-1" />
                     </Button>
