@@ -4,6 +4,7 @@ import Orders from "../components/Orders";
 import Setting from "../components/Setting";
 import LoginForm from "../components/LoginForm";
 import Register from "../components/Register";
+import New from "../components/New";
 import React, { createContext, useContext, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "../components/App";
@@ -72,6 +73,7 @@ export default function Container() {
           </Route>
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<Register />} />
+          <Route path="new" element={<New />} />
         </Routes>
       </BrowserRouter>
     </>

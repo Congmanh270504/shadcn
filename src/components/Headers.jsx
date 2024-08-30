@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 import { Outlet, Link, NavLink } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import avatar from "/src/assets/Imgs/android-chrome-192x192.png";
+import avatar from "../assets/Imgs/avatar.png"
 import {
     ChevronLeft,
     ChevronRight,
@@ -91,7 +91,7 @@ function Headers({ tittleAbove, setTittleAbove }) {
                         className="overflow-hidden rounded-full"
                     >
                         <Avatar>
-                            <AvatarImage src="https://github.com/Congmanh270504/Db-FloralHaven/blob/main/binh-hoa-anh-duong-ruc-ro-572/12165d1e0f.jpg" />
+                            <AvatarImage src={avatar} />
                             <AvatarFallback>User</AvatarFallback>
                         </Avatar>
 

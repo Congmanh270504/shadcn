@@ -1,6 +1,8 @@
 import './style.css'
 import { FaUser } from "react-icons/fa";
 import { Outlet, Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
     ChevronLeft,
     ChevronRight,
@@ -79,6 +81,29 @@ import {
 } from "@/components/ui/tooltip"
 
 export function Dashboard() {
+    const [items, setItems] = useState([]);
+    const [items2, setItems2] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3001/students')
+            .then(response => response.json())
+            .then(item => {
+                setItems(item)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+            });
+
+        console.log(items);
+        fetch('http://localhost:3001/car')
+            .then(response => response.json())
+            .then(item => {
+                setItems2(item)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+            });
+    }, []);
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:px-16 md:gap-8 lg:grid-cols-3 xl:grid-cols-3 ">
             <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
@@ -517,6 +542,7 @@ export function Dashboard() {
                     </CardFooter>
                 </Card>
             </div>
+
         </main>
     )
 }
